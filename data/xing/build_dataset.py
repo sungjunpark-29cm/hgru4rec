@@ -112,8 +112,6 @@ args = parser.parse_args()
 
 print('Loading {}'.format(args.interactions_path))
 interactions = pd.read_csv(args.interactions_path, header=0, sep='\t')
-# remove interactions of type 'delete'
-interactions = interactions[interactions.interaction_type != 4].copy()
 
 print('Building sessions')
 # partition interactions into sessions with 30-minutes idle time
@@ -125,7 +123,7 @@ print('Num sessions: {}'.format(interactions.session_id.nunique()))
 
 print('Filtering data')
 # drop duplicate interactions within the same session
-interactions.drop_duplicates(subset=['item_id', 'session_id', 'interaction_type'], keep='first', inplace=True)
+interactions.drop_duplicates(subset=['item_id', 'session_id'], keep='first', inplace=True)
 # keep items with >=20 interactions
 item_pop = interactions.item_id.value_counts()
 good_items = item_pop[item_pop >= 20].index
