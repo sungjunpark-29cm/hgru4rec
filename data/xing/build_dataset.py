@@ -111,7 +111,7 @@ parser.add_argument('interactions_path')
 args = parser.parse_args()
 
 print('Loading {}'.format(args.interactions_path))
-interactions = pd.read_csv(args.interactions_path, header=0, sep='\t')
+interactions = pd.read_csv(args.interactions_path, header=0, sep='\t', index_col=False)
 
 print('Building sessions')
 # partition interactions into sessions with 30-minutes idle time
