@@ -3,7 +3,7 @@ cd ../src
 #
 # HGRU INIT (LARGE)
 #
-THEANO_FLAGS=mode=FAST_RUN,device=gpu python train_hier_gru.py xing-dense lso-test 500 500 \
+THEANO_FLAGS=mode=FAST_RUN,device=cuda python train_hier_gru.py xing-dense lso-test 500 500 \
 --loss top1 --hidden_act tanh \
 --user_propagation_mode init --user_to_output 0 \
 --adapt adagrad --learning_rate 0.1 --momentum 0.1 --batch_size 100 \
@@ -18,7 +18,7 @@ THEANO_FLAGS=mode=FAST_RUN,device=gpu python train_hier_gru.py xing-dense lso-te
 #
 # HGRU ALL (LARGE)
 #
-THEANO_FLAGS=mode=FAST_RUN,device=gpu python train_hier_gru.py xing-dense lso-test 500 500 \
+THEANO_FLAGS=mode=FAST_RUN,device=cuda python train_hier_gru.py xing-dense lso-test 500 500 \
 --loss top1 --hidden_act tanh \
 --user_propagation_mode all --user_to_output 0 \
 --adapt adagrad --learning_rate 0.05 --momentum 0.3 --batch_size 50 \
